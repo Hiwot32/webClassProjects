@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Seles Dashboard</title>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 class="dashBorad_title">Coffee Sales Dashboard</h1>
+    <section class="data_section">
+    <div class="left_side">
+     <div class="datatable-container">
+    <h2 class="table_title">Product Summary Table</h2>
+    <table id="coffeeTable" class="display">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Units Sold</th>
+          <th>Price per Unit ($)</th>
+          <th>Total Profit ($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>Espresso</td>
+            <td>200</td>
+            <td>5</td>
+            <td>1000</td>
+        </tr>
+        <tr>
+            <td>Latte</td>
+            <td>240</td>
+            <td>6</td>
+            <td>1440</td>
+        </tr>
+        <tr>
+            <td>Cappuccino</td>
+            <td>180</td>
+            <td>4.5</td>
+            <td>810</td>
+        </tr>
+        <tr>
+            <td>Americano</td>
+            <td>150</td>
+            <td>4</td>
+            <td>600</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+
+  <div class="right-side">
+   <div class="charts1">
+    <canvas id="espressoChart"></canvas>
+    <canvas id="latteChart"></canvas>
+    </div>
+    <div class="charts2">
+    <canvas id="cappuccinoChart"></canvas>
+    <canvas id="americanoChart"></canvas>
+  </div>
+  </div>
+  </section>
+
+  
+
+
+  <script>
+    $(document).ready(function() {
+      $('#coffeeTable').DataTable();
+    });
+
+     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+
+    const chartDatas = [
+      {
+        id: 'espressoChart',
+        label: 'Espresso Profit',
+        data: [150, 180, 200, 170, 160, 140],
+        color: '#6F4E37',
+        type:'line'
+      },
+      {
+        id: 'latteChart',
+        label: 'Latte Profit',
+        data: [200, 250, 260, 300, 310, 320],
+        color: '#C2B280',
+        type:'bar'
+      },
+      {
+        id: 'cappuccinoChart',
+        label: 'Cappuccino Profit',
+        data: [130, 140, 150, 160, 170, 180],
+        color: '#A0522D',
+        type:'radar'
+      },
+      {
+        id: 'americanoChart',
+        label: 'Americano Profit',
+        data: [100, 110, 120, 130, 140, 150],
+        color: '#8B4513',
+        type:'doughnut'
+      }
+    ];
+
+    chartDatas.forEach(data => {
+      const ctx = document.getElementById(data.id).getContext('2d');
+      new Chart(ctx, {
+        type: data.type,
+        data: {
+          labels: months,
+          datasets: [{
+            label: data.label,
+            data: data.data,
+            borderColor: data.color,
+            backgroundColor: data.color + '33',
+            tension: 0.3,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Profit ($)'
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: 'Month'
+              }
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

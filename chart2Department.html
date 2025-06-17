@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my html</title>
+
+    <style>
+       body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     }
+
+       th {
+        padding: 5px;
+        }
+
+     table, th, td {
+       border: 1px solid black;
+      }
+    .myDiv {
+       width: 300px;
+       height: 300px;
+     }
+      
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+
+    <div class="inputContainer">
+      <input type="text" id="UserInputDepartment" placeholder="department" />
+      <input type="text" id="UserInputNumberOfStudents" placeholder="number of students" />
+      <button onclick="submitForm()">Submit</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Department</th>
+          <th>number of students</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+
+    <div class="myDiv">
+         <canvas id="myPieChart"></canvas>
+        </div>
+     <button onclick="updateChart()">update</button>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    
+    <script>
+      let data = [];
+
+      function submitForm() {
+        let tableBody = document.getElementById("tableBody");
+        let UserInputDepartment = document.getElementById( "UserInputDepartment").value;
+        let UserInputNumberOfStudents = document.getElementById("UserInputNumberOfStudents" ).value;
+        let info = {
+          Department: UserInputDepartment,
+          numberOfStudents: UserInputNumberOfStudents,
+        };
+
+        data.push(info);
+
+        let row = document.createElement("tr");
+        let departmentCell = document.createElement("td");
+        departmentCell.innerText = UserInputDepartment;
+        row.append(departmentCell);
+
+        let numberOfStudentsCell = document.createElement("td");
+        numberOfStudentsCell.innerText = UserInputNumberOfStudents;
+        row.append(numberOfStudentsCell);
+
+        tableBody.append(row);
+
+        console.log(data);
+      }
+
+      let myPieChart = document.getElementById("myPieChart");
+
+      let labelsArray = ["computerScience", "buisnessAdministration"];
+      let dataArray = [75, 25];
+
+      let myChart = new Chart(myPieChart, {
+        type: "pie",
+        data: {
+          labels: labelsArray,
+          datasets: [
+            {
+              data: dataArray,
+            },
+          ],
+        },
+      });
+      function updateChart() {
+        labelsArray = [];
+        dataArray = [];
+
+        data.forEach((info) => {
+          labelsArray.push(info.Department);
+          dataArray.push(info.numberOfStudents);
+        });
+
+        myChart.data.labels = labelsArray;
+        myChart.data.datasets[0].data = dataArray;
+
+        myChart.update();
+      }
+    </script>
+  </body>
+</html>

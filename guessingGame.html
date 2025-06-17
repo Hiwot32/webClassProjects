@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+
+
+   <h1>Gussing Game</h1>
+
+
+   <h2>Guess a number between 1 and 10</h2>
+
+
+   <input type="number" id="guess" placeholder="Enter your guess">
+   <button onclick="submit()">Submit</button>
+   <p id="demo"></p>
+  
+</body>
+
+
+<script>
+  
+   const emojis = ["😀", "😂", "😍", "🤔", "🥳", "😎", "😢", "😡", "👍", "🙏"];
+
+   function submit(){
+    let result=document.getElementById("guess").value 
+    // let element=document.getElementById("demo")
+    if(parseInt(result)==6){
+        document.getElementById("demo").innerHTML=emojis[4];
+    }
+    else if(parseInt(result)>9 || parseInt(result)<2){
+        document.getElementById("demo").innerHTML=emojis[7];
+   }
+   else if(parseInt(result)>4 || parseInt(result)<=7){
+    document.getElementById("demo").innerHTML=emojis[0];
+   }
+   else(parseInt(result)<4 || parseInt(result)>8)
+   {
+    document.getElementById("demo").innerHTML=emojis[6];
+   }
+}
+</script>
+</html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prayer Reminders</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="container py-5">
+  <h2 class="text-center mb-5">🕌 Prayer Times with Reminders</h2>
+  <div class="row row-cols-1 row-cols-md-5 g-4 text-center">
+    <div class="col">
+      <div class="card p-3">
+        <div class="prayer-time">🌅 Fajr</div>
+        <div class="time" id="fajr-time">05:00</div>
+        <button class="btn btn-outline-primary btn-sm mt-2" onclick="setReminder('Fajr', '05:00')">Set Reminder</button>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card p-3">
+        <div class="prayer-time">🌞 Dhuhr</div>
+        <div class="time" id="dhuhr-time">12:30</div>
+        <button class="btn btn-outline-primary btn-sm mt-2" onclick="setReminder('Dhuhr', '12:30')">Set Reminder</button>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card p-3">
+        <div class="prayer-time">🌇 Asr</div>
+        <div class="time" id="asr-time">15:45</div>
+        <button class="btn btn-outline-primary btn-sm mt-2" onclick="setReminder('Asr', '15:45')">Set Reminder</button>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card p-3">
+        <div class="prayer-time">🌆 Maghrib</div>
+        <div class="time" id="maghrib-time">18:15</div>
+        <button class="btn btn-outline-primary btn-sm mt-2" onclick="setReminder('Maghrib', '18:15')">Set Reminder</button>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card p-3">
+        <div class="prayer-time">🌃 Isha</div>
+        <div class="time" id="isha-time">20:00</div>
+        <button class="btn btn-outline-primary btn-sm mt-2" onclick="setReminder('Isha', '20:00')">Set Reminder</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="./script.js"></script>
+
+</body>
+</html>

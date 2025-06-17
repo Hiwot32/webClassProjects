@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bootstrap Starter Template</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row"  id="list">
+
+           
+                <div class="card col-lg-2 col-xl-2 col-md-2" style="width: 18rem;">
+            
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+        
+        
+    </div>
+    <script>
+        for (let index = 0; index < 5; index++) {
+          
+            let card = document.createElement('div');
+        card.className = 'card col-lg-2 col-xl-2 col-md-2';
+        card.style.width = '18rem';
+
+        let cardBody  = document.createElement('div');
+        cardBody.className = 'card-body';  
+        card.appendChild(cardBody);
+        let cardTitle = document.createElement('h5');
+        cardTitle.className = 'card-title';
+        cardTitle.innerHTML = 'Card title';
+        let cardText = document.createElement('p');
+        cardText.className = 'card-text';
+        cardText.innerHTML = 'Some quick example text to build on the card title and make up the bulk of the card’s content.';
+        let cardLink = document.createElement('a');
+        cardLink.className = 'btn btn-primary';
+        cardLink.innerHTML = 'Go somewhere';
+        cardLink.href = '#';
+        cardBody.appendChild(cardText);
+        cardBody.appendChild(cardLink);
+        cardBody.appendChild(cardTitle);
+        document.getElementById('list').appendChild(card);
+        }
+       
+
+    </script>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

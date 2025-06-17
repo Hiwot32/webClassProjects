@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple To-Do App</title>
+</head>
+ <style>
+    body { font-family: Arial; padding: 20px; }
+    input { margin: 5px; padding: 5px; }
+    button { margin: 5px; }
+    table { border-collapse: collapse; margin-top: 20px; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+
+  <h2>📚 Book Lister App</h2>
+
+  <input type="text" id="title" placeholder="Book Title">
+  <input type="text" id="author" placeholder="Author">
+  <button onclick="addBook()">Add Book</button>
+
+  <table id="bookTable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+    <!-- <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="createTask()">Add Task</button>
+    <ul id="taskList"></ul> -->
+
+    <script>
+         let books = [];
+
+    function renderBooks() {
+      const tbody = document.querySelector("#bookTable tbody");
+      tbody.innerHTML = ""; // clear table
+
+      books.forEach((book, index) => {
+        const row = document.createElement("tr");
+
+        const titleCell = document.createElement("td");
+        titleCell.innerText = book.title;
+
+        const authorCell = document.createElement("td");
+        authorCell.innerText = book.author;
+
+        const actionCell = document.createElement("td");
+
+        const editBtn = document.createElement("button");
+        editBtn.innerText = "Edit";
+        editBtn.onclick = () => editBook(index);
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+        deleteBtn.onclick = () => deleteBook(index);
+
+        actionCell.appendChild(editBtn);
+        actionCell.appendChild(deleteBtn);
+
+        row.appendChild(titleCell);
+        row.appendChild(authorCell);
+        row.appendChild(actionCell);
+
+        tbody.appendChild(row);
+      });
+    }
+
+    function addBook() {
+      const titleInput = document.getElementById("title");
+      const authorInput = document.getElementById("author");
+      const title = titleInput.value.trim();
+      const author = authorInput.value.trim();
+
+      if (title === "" || author === "") return;
+
+      books.push({ title, author });
+      titleInput.value = "";
+      authorInput.value = "";
+      renderBooks();
+    }
+
+    function editBook(index) {
+      const newTitle = prompt("Edit title:", books[index].title);
+      const newAuthor = prompt("Edit author:", books[index].author);
+      if (newTitle && newAuthor) {
+        books[index].title = newTitle.trim();
+        books[index].author = newAuthor.trim();
+        renderBooks();
+      }
+    }
+
+    function deleteBook(index) {
+      books.splice(index, 1);
+      renderBooks();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // let tasks = [];
+
+        // // Create
+        // function createTask() {
+        //     const taskInput = document.getElementById('taskInput');
+        //     const taskText = taskInput.value;
+        //     if (taskText !== '') {
+        //         const task = {
+        //             id: Date.now(),
+        //             text: taskText,
+        //         };
+        //         tasks.push(task);
+        //         renderTasks();
+        //         taskInput.value = '';
+        //     }
+        // }
+
+        // // Read
+        // function renderTasks() {
+        //     const taskList = document.getElementById('taskList');
+        //     taskList.innerHTML = '';
+        //     tasks.forEach(task => {
+        //         const li = document.createElement('li');
+        //         li.innerHTML = `
+        //             <span>${task.text}</span>
+        //             <button onclick="updateTask(${task.id})">Edit</button>
+        //             <button onclick="deleteTask(${task.id})">Delete</button>
+        //         `;
+        //         taskList.appendChild(li);
+        //     });
+        // }
+
+        // // Update
+        // function updateTask(id) {
+        //     const task = tasks.find(task => task.id === id);
+        //     if (task) {
+        //         const newText = prompt('Edit task:', task.text);
+        //         if (newText !== null) {
+        //             task.text = newText.trim();
+        //             renderTasks();
+        //         }
+        //     }
+        // }
+
+        // // Delete
+        // function deleteTask(id) {
+        //     tasks = tasks.filter(task => task.id !== id);
+        //     renderTasks();
+        // }
+
+        // renderTasks(); // Initial render
+    </script>
+</body>
+</html>

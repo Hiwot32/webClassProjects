@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+       .grid-container {
+ display: grid;
+ grid-template-columns: repeat(3, 200px);
+ grid-gap: 3em;
+ justify-content: center;
+}
+
+
+.grid-item {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ grid-template-rows: 1fr 2fr 1fr;
+ grid-gap: 5px;
+ background-color: white;
+ color: black;
+ font-size: 1.5em;
+ padding: 10px;
+ border-radius: 5%;
+ box-shadow: 0px 5px 15px grey;
+}
+
+
+.heart {
+ text-align: center;
+ align-self: center;
+ font-size: 2em;
+ color: red;
+}
+
+
+.top-left {
+ padding: 0.1em;
+}
+
+
+.bottom-right {
+ align-self: end;
+ transform: rotate(180deg);
+}
+
+
+   </style>
+</head>
+<body>
+  
+   <h1 style="text-align:center"> Playing Cards using CSS Grid</h1><br>
+
+
+<div class="grid-container">
+ <div class="grid-item">
+   <div id="top-num" class="top-left">X<br>
+     <div style="color:red">♥</div>
+   </div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div class="heart">♥</div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div id="bottom-num" class="bottom-right">X<br>
+     <div style="color:red;">♥</div> 
+   </div>
+ </div>
+
+
+ <div class="grid-item">
+   <div id="top-num2" class="top-right">2<br>
+     <div style="color:red;">♥</div>
+   </div>
+   <div class="heart">♥</div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div class="heart">♥</div>
+   <div id="bottom-num2" class="bottom-right">2<br>
+     <div style="color:red;">♥</div>
+   </div>
+ </div>
+
+
+ </div>
+</div>
+
+
+<div class="grid-container">
+  
+   <button onclick="changeCard1()" style="margin-top: 2em;">Click</button>
+
+
+   <button onclick="changeCard2()"  style="margin-top: 2em;">Click 2</button>
+</div>
+</div>
+
+<h4 style="margin-left: 500px;" id="demo"></h4>
+
+
+<script>
+
+
+   function changeCard1(){
+
+
+       const topNumber = document.getElementById('top-num');
+       const bottomNumber = document.getElementById('bottom-num');
+      
+       const randomIndex = Math.floor(Math.random() * playingCards.length);
+       const randomCard = playingCards[randomIndex];
+       topNumber.innerHTML = randomCard ;
+       bottomNumber.innerHTML = randomCard ;
+
+
+   }
+
+
+  
+
+
+   function changeCard2(){
+
+
+const topNumber = document.getElementById('top-num2');
+const bottomNumber = document.getElementById('bottom-num2');
+
+
+const randomIndex = Math.floor(Math.random() * playingCards.length);
+const randomCard = playingCards[randomIndex];
+topNumber.innerHTML = randomCard ;
+bottomNumber.innerHTML = randomCard ;
+const num1 = document.getElementById('top-num').innerHTML
+compete(num1, randomCard)
+  
+}
+
+
+function compete(num1, num2){
+   if(num1=== 'A' || num2=== 'A'){
+       num1 = 14
+      num1 = 1
+   }
+   else if(num1=== 'K' || num2=== 'K'){
+       num1 = 13
+
+     
+   }
+   else if(num1=== 'Q' || num2=== 'Q'){
+       num1 = 12
+     
+   }
+  
+
+
+   if(num1=== 'J'      || num2=== 'J'){
+       num1 = 11
+     
+   }
+
+   if(num1>num2){
+    document.getElementById("demo").innerHTML="The winner is the first player";
+   }else{
+    document.getElementById("demo").innerHTML="The scond player is the winner";
+   }
+}
+
+
+const playingCards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+</script>
+</body>
+</html>
+
